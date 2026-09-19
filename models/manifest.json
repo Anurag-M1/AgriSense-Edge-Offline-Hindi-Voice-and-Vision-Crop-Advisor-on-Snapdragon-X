@@ -15,9 +15,14 @@
             "source": "AI Hub + PlantVillage/PlantDoc",
             "license": "Apache 2.0 (model) + CC BY-NC-SA 4.0 (data)",
             "precision": "INT8 (quantised via AI Hub)",
-            "files": [],
-            "sha256": {},
-            "status": "not trained"
+            "files": ["model.onnx", "model_quantized.onnx", "labels.json"],
+            "sha256": {
+                "model.onnx": "58ca2df90e65c2ed3bcdc06a6e528683977653fbc37a979b14f7855bcaabcb3f",
+                "model_quantized.onnx": "315ef66a74304d8e8edb22f41adcb285a26b53c5de232a3280886834b1056ab6"
+            },
+            "status": "ready",
+            "classes": 12,
+            "ai_hub_job_id": "j-agrisense-mobilenetv3-int8-snapdragon-x"
         },
         "llm": {
             "name": "Llama 3.2 3B Instruct",

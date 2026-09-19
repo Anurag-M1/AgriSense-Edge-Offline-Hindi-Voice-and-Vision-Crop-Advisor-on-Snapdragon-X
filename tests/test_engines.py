@@ -48,8 +48,24 @@ class TestVisionEngine:
         result = vision_engine.classify(sample_image)
         assert result.label is not None
         assert result.confidence >= 0
-        assert len(result.top_3) > 0
+        assert len(result.top_3) == 3
         assert result.latency_ms >= 0
+        # Verify top-3 format: (label, score) and sorted descending
+        for lbl, score in result.top_3:
+            assert isinstance(lbl, str)
+            assert 0.0 <= score <= 1.0
+        assert result.top_3[0][1] >= result.top_3[1][1] >= result.top_3[2][1]
+
+    def test_vision_engine_cpu_and_qnn_backends(self, sample_image):
+        """Test VisionEngine returns top-3 labels on both cpu and qnn_npu backends."""
+        for backend in ["cpu", "qnn_npu"]:
+            engine = VisionEngine()
+            engine.load(backend=backend)
+            res = engine.classify(sample_image)
+            assert len(res.top_3) == 3
+            assert res.confidence >= 0
+            assert res.backend_used in ("cpu", "qnn_npu")
+            engine.unload()
 
     def test_classify_without_load_raises(self, sample_image):
         engine = VisionEngine()
@@ -57,7 +73,8 @@ class TestVisionEngine:
             engine.classify(sample_image)
 
     def test_labels_populated(self, vision_engine):
-        assert len(vision_engine.labels) > 0
+        assert len(vision_engine.labels) == 12
+        assert "Tomato___Early_blight" in vision_engine.labels
 
     def test_confidence_threshold(self, vision_engine):
         assert 0 < vision_engine.confidence_threshold < 1

@@ -1,0 +1,50 @@
+{
+    "version": "0.1.0",
+    "models": {
+        "whisper": {
+            "name": "Whisper-Small (multilingual)",
+            "source": "Qualcomm AI Hub / OpenAI",
+            "license": "MIT",
+            "precision": "INT8 (quantised via AI Hub)",
+            "files": [],
+            "sha256": {},
+            "status": "not downloaded"
+        },
+        "vision": {
+            "name": "MobileNet-v3-Large (fine-tuned)",
+            "source": "AI Hub + PlantVillage/PlantDoc",
+            "license": "Apache 2.0 (model) + CC BY-NC-SA 4.0 (data)",
+            "precision": "INT8 (quantised via AI Hub)",
+            "files": [],
+            "sha256": {},
+            "status": "not trained"
+        },
+        "llm": {
+            "name": "Llama 3.2 3B Instruct",
+            "source": "Qualcomm AI Hub / Meta",
+            "license": "Llama 3.2 Community License",
+            "precision": "W4A16",
+            "files": [],
+            "sha256": {},
+            "status": "not downloaded"
+        },
+        "tts": {
+            "name": "Piper hi_IN (Rohan medium)",
+            "source": "rhasspy/piper-voices on HuggingFace",
+            "license": "MIT",
+            "precision": "FP32",
+            "files": [],
+            "sha256": {},
+            "status": "not downloaded"
+        },
+        "embeddings": {
+            "name": "all-MiniLM-L6-v2",
+            "source": "sentence-transformers on HuggingFace",
+            "license": "Apache 2.0",
+            "precision": "FP32",
+            "files": [],
+            "sha256": {},
+            "status": "not downloaded"
+        }
+    }
+}

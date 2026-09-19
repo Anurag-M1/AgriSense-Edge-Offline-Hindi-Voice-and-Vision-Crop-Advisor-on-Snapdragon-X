@@ -1,0 +1,94 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[project]
+name = "agrisense-edge"
+version = "0.1.0"
+description = "Offline Hindi voice-first crop advisory app for Snapdragon X NPU"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "AgriSense Team"},
+]
+
+# Runtime dependencies (env-runtime)
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "python-multipart>=0.0.6",
+    "onnxruntime>=1.17.0",
+    "numpy>=1.24.0",
+    "Pillow>=10.0.0",
+    "soundfile>=0.12.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+]
+
+[project.optional-dependencies]
+# Export environment (x64 Python required for AI Hub tooling)
+export = [
+    "qai-hub>=0.15.0",
+    "qai-hub-models>=0.12.0",
+    "torch>=2.1.0",
+    "torchvision>=0.16.0",
+    "transformers>=4.36.0",
+    "datasets>=2.16.0",
+    "onnx>=1.15.0",
+]
+# QNN NPU runtime (Windows ARM64 only)
+qnn = [
+    "onnxruntime-qnn>=1.18.0",
+]
+# Embeddings + retrieval
+retrieval = [
+    "sentence-transformers>=2.2.0",
+]
+# TTS
+tts = [
+    "piper-tts>=1.2.0",
+]
+# LLM CPU fallback
+llm-cpu = [
+    "llama-cpp-python>=0.2.0",
+]
+# Vision fine-tuning
+training = [
+    "torch>=2.1.0",
+    "torchvision>=0.16.0",
+    "scikit-learn>=1.3.0",
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "httpx>=0.25.0",
+]
+all = [
+    "agrisense-edge[retrieval,tts,dev]",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+    "offline: marks tests that require network blocking",
+    "safety: marks adversarial safety tests",
+    "slow: marks tests that are slow to run",
+    "npu: marks tests that require NPU hardware",
+]

@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+venv/
+.venv/
+env/
+.env
+*.whl
+
+# Models (large files)
+models/*.onnx
+models/*.bin
+models/*.gguf
+models/*.pt
+models/*.pth
+models/*.safetensors
+models/whisper/
+models/llm/
+models/vision/
+models/tts/
+models/embeddings/
+!models/manifest.json
+!models/.gitkeep
+
+# Data
+training/data/
+training/checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+app/frontend/dist/
+app/frontend/.env.local
+
+# Benchmarks output
+benchmarks/results/*.csv
+benchmarks/results/*.png
+benchmarks/results/*.json
+!benchmarks/results/.gitkeep
+
+# Misc
+*.log
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+.coverage

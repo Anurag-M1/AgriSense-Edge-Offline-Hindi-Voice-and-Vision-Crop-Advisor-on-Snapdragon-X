@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --font-hindi: 'Noto Sans Devanagari', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --color-primary: #16a34a;
+  --color-primary-dark: #15803d;
+  --color-primary-light: #86efac;
+  --color-surface: #f0fdf4;
+  --color-surface-dark: #0f1a12;
+  --color-accent: #eab308;
+  --color-danger: #dc2626;
+  --color-muted: #6b7280;
+}
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-hindi);
+  background: linear-gradient(135deg, #0f1a12 0%, #1a2e1f 50%, #0f1a12 100%);
+  color: #e5e7eb;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Large touch targets for farmer use */
+.touch-target {
+  min-height: 56px;
+  min-width: 56px;
+}
+
+/* Mic button pulse animation */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.4; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+.mic-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: pulse-ring 1.5s ease-out infinite;
+  z-index: -1;
+}
+
+/* Confidence bar */
+.confidence-bar {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--color-danger) 0%, var(--color-accent) 50%, var(--color-primary) 100%);
+  transition: width 0.5s ease-out;
+}
+
+/* Stage progress dots */
+.stage-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.stage-dot.pending { background: #374151; }
+.stage-dot.active { background: var(--color-accent); animation: pulse-ring 1s ease-out infinite; }
+.stage-dot.done { background: var(--color-primary); }
+.stage-dot.error { background: var(--color-danger); }
+
+/* Card glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+
+/* Badge */
+.backend-badge {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.backend-badge.npu { background: #16a34a22; color: #86efac; border: 1px solid #16a34a44; }
+.backend-badge.cpu { background: #3b82f622; color: #93c5fd; border: 1px solid #3b82f644; }

@@ -1,0 +1,12 @@
+source_file,crop,disease,source_name,source_url,source_type,language,status
+tomato_early_blight.md,Tomato,Early Blight,ICAR-IIHR Bangalore,"https://iihr.res.in/",Government,hi+en,needs agronomist review
+tomato_late_blight.md,Tomato,Late Blight,ICAR-IIHR Bangalore,"https://iihr.res.in/",Government,hi+en,needs agronomist review
+potato_early_blight.md,Potato,Early Blight,ICAR-CPRI Shimla,"https://cpri.icar.gov.in/",Government,hi+en,needs agronomist review
+potato_late_blight.md,Potato,Late Blight,ICAR-CPRI Shimla,"https://cpri.icar.gov.in/",Government,hi+en,needs agronomist review
+rice_bacterial_leaf_blight.md,Rice,Bacterial Leaf Blight,ICAR-IIRR Hyderabad,"https://iirr.icar.gov.in/",Government,hi+en,needs agronomist review
+rice_brown_spot.md,Rice,Brown Spot,ICAR-IIRR Hyderabad,"https://iirr.icar.gov.in/",Government,hi+en,needs agronomist review
+wheat_leaf_rust.md,Wheat,Leaf Rust,ICAR-IIWBR Karnal,"https://iiwbr.icar.gov.in/",Government,hi+en,needs agronomist review
+maize_common_rust.md,Maize,Common Rust,ICAR-IIMR Ludhiana,"https://iimr.icar.gov.in/",Government,hi+en,needs agronomist review
+cotton_bacterial_blight.md,Cotton,Bacterial Blight,ICAR-CICR Nagpur,"https://cicr.icar.gov.in/",Government,hi+en,needs agronomist review
+chilli_leaf_curl.md,Chilli,Leaf Curl,ICAR-IISR Calicut,"https://iisr.icar.gov.in/",Government,hi+en,needs agronomist review
+groundnut_early_leaf_spot.md,Groundnut,Early Leaf Spot,ICAR-DGR Junagadh,"https://dgr.icar.gov.in/",Government,hi+en,needs agronomist review

@@ -32,8 +32,20 @@ class TestASREngine:
     def test_transcribe_returns_result(self, asr_engine, sample_audio):
         result = asr_engine.transcribe(sample_audio)
         assert result.text is not None
-        assert result.language is not None
+        assert result.language == "hi"
+        assert result.confidence > 0
         assert result.latency_ms >= 0
+
+    def test_asr_cpu_and_qnn_backends(self, sample_audio):
+        """Test ASREngine works on both cpu and qnn_npu backends."""
+        for backend in ["cpu", "qnn_npu"]:
+            engine = ASREngine()
+            engine.load(backend=backend)
+            result = engine.transcribe(sample_audio)
+            assert result.text is not None
+            assert result.language == "hi"
+            assert result.backend_used in ("cpu", "qnn_npu")
+            engine.unload()
 
     def test_transcribe_without_load_raises(self, sample_audio):
         engine = ASREngine()

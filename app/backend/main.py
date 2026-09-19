@@ -54,6 +54,10 @@ async def lifespan(app: FastAPI):
     tts_engine.load(backend)
     retrieval_engine.load()
 
+    # Automatically index KB notes if database is empty
+    if not db.get_kb_vectors():
+        retrieval_engine.index_knowledge_base("kb")
+
     print(f"{settings.app_name} ready at http://{settings.host}:{settings.port}")
     yield
 

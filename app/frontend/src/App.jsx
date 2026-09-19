@@ -175,6 +175,30 @@ function App() {
     }
   }
 
+  const speakAdvice = () => {
+    if (!result?.advice_text) return
+
+    // 1. If backend returned synthesized WAV audio, play it
+    if (result.audio_base64) {
+      try {
+        const snd = new Audio(`data:audio/wav;base64,${result.audio_base64}`)
+        snd.play()
+        return
+      } catch (e) {
+        console.warn('Audio playback failed, falling back to Web Speech:', e)
+      }
+    }
+
+    // 2. Use browser Web Speech API (offline native voice)
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel()
+      const utterance = new SpeechSynthesisUtterance(result.advice_text)
+      utterance.lang = lang === 'hi' ? 'hi-IN' : 'en-US'
+      utterance.rate = 0.92
+      window.speechSynthesis.speak(utterance)
+    }
+  }
+
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-6 max-w-lg mx-auto">
       {/* Header */}
@@ -331,10 +355,13 @@ function App() {
           )}
 
           {/* TTS / speak button */}
-          {result.tts_available && (
-            <button className="w-full py-3 rounded-xl bg-primary/20 border border-primary/40 hover:bg-primary/30 transition flex items-center justify-center gap-2 touch-target mb-3">
-              <span className="text-xl">🔊</span>
-              <span>{t.speak_btn}</span>
+          {(result.tts_available || ('speechSynthesis' in window)) && (
+            <button
+              onClick={speakAdvice}
+              className="w-full py-3.5 rounded-xl bg-primary/20 border border-primary/40 hover:bg-primary/30 transition flex items-center justify-center gap-2 touch-target mb-3 cursor-pointer text-primary-light font-medium"
+            >
+              <span className="text-2xl">🔊</span>
+              <span className="text-base">{t.speak_btn}</span>
             </button>
           )}
 

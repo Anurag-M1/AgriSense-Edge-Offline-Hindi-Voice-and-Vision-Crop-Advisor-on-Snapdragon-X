@@ -14,14 +14,12 @@ Creates:
 from __future__ import annotations
 
 import json
-import os
 from pathlib import Path
 
 import numpy as np
 import onnx
-from onnx import helper, TensorProto
+from onnx import TensorProto, helper
 from PIL import Image, ImageDraw, ImageFilter
-
 
 CLASSES = [
     "Tomato___Early_blight",
@@ -184,10 +182,9 @@ def generate_synthetic_leaf(class_idx: int, field_style: bool = False) -> Image.
                 # Yellow halo
                 draw.ellipse([cx - rad - 3, cy - rad - 3, cx + rad + 3, cy + rad + 3], outline=(200, 190, 40), width=2)
 
-    if field_style:
+    if field_style and np.random.random() > 0.5:
         # Add realistic field distortions: slight blur or noise
-        if np.random.random() > 0.5:
-            img = img.filter(ImageFilter.GaussianBlur(radius=0.8))
+        img = img.filter(ImageFilter.GaussianBlur(radius=0.8))
 
     return img
 

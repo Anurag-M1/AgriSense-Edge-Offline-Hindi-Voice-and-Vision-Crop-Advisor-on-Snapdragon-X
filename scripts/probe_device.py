@@ -56,9 +56,9 @@ def probe_onnxruntime():
             try:
                 import onnxruntime_qnn as qnn_ep  # noqa: F401
 
-                print(f"  QNN Plugin:     ✅ Installed (may need registration)")
+                print("  QNN Plugin:     ✅ Installed (may need registration)")
             except ImportError:
-                print(f"  QNN Plugin:     ❌ Not installed (pip install onnxruntime-qnn)")
+                print("  QNN Plugin:     ❌ Not installed (pip install onnxruntime-qnn)")
 
         # Check for CUDA (useful for training)
         cuda_available = "CUDAExecutionProvider" in providers

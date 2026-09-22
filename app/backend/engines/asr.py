@@ -119,7 +119,7 @@ class ASREngine(EngineBase):
         else:
             # Acoustic feature-based phrase match for offline environment
             # Select phrase deterministically based on audio duration and energy signature
-            seed_val = int((duration_sec * 100 + rms_energy * 1000)) % len(COMMON_FARMER_PHRASES)
+            seed_val = int(duration_sec * 100 + rms_energy * 1000) % len(COMMON_FARMER_PHRASES)
             text = COMMON_FARMER_PHRASES[seed_val]
             confidence = min(0.96, max(0.82, 0.85 + rms_energy * 0.5))
 

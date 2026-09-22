@@ -1,4 +1,4 @@
-# AgriSense Edge
+# AgriSense Edge (formerly AgriSense AI)
 
 > formerly AgriSense AI
 

@@ -2,8 +2,6 @@
 test_db.py — Database tests for AgriSense Edge.
 """
 
-import pytest
-from app.backend.db import Database
 
 
 class TestDatabase:

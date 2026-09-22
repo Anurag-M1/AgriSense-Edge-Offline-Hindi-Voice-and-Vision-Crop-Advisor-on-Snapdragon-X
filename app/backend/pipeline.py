@@ -8,16 +8,17 @@ stages for a complete crop advisory interaction.
 from __future__ import annotations
 
 import time
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Callable
+from typing import Any
 
 import numpy as np
 
 from app.backend.config import settings
 from app.backend.engines.asr import ASREngine, TranscriptionResult
-from app.backend.engines.llm import LLMEngine, GenerationResult
-from app.backend.engines.tts import TTSEngine, SpeechResult
+from app.backend.engines.llm import GenerationResult, LLMEngine
+from app.backend.engines.tts import SpeechResult, TTSEngine
 from app.backend.engines.vision import ClassificationResult, VisionEngine
 from app.backend.retrieval import RetrievalEngine, RetrievalResult
 from app.backend.safety import SafetyCheckResult, check_and_fix_response

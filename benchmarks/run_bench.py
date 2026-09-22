@@ -10,17 +10,13 @@ from __future__ import annotations
 
 import argparse
 import csv
-import json
-import os
 import platform
 import statistics
 import time
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
 
-from app.backend.config import Settings
 from app.backend.db import Database
 from app.backend.engines.asr import ASREngine
 from app.backend.engines.llm import LLMEngine

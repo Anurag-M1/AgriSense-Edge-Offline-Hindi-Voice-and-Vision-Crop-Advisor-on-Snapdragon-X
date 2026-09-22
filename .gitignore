@@ -61,3 +61,7 @@ benchmarks/results/*.json
 .ruff_cache/
 htmlcov/
 .coverage
+*.db-shm
+*.db-wal
+graphify-out/
+

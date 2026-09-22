@@ -5,10 +5,8 @@ Blocks all network sockets and runs the full pipeline to verify
 that no internet is required for any step.
 """
 
-import socket
 from unittest.mock import patch
 
-import numpy as np
 import pytest
 
 

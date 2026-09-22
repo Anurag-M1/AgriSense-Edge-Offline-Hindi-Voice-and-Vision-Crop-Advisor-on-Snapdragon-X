@@ -2,7 +2,7 @@
 
 > **Hard Rule:** Every number in this document was measured by running `benchmarks/run_bench.py` and `benchmarks/accuracy_eval.py`. No results are fabricated.
 
-- **Last Updated:** 2026-09-19 21:32:42
+- **Last Updated:** 2026-09-22 09:56:56
 - **Measurement Host:** Darwin arm64 (dev machine)
 - **Target Platform:** Qualcomm Snapdragon X (Windows on Arm, Hexagon NPU 45 TOPS)
 
@@ -12,12 +12,12 @@
 
 | Stage | Model / Component | Runtime | Median (ms) | P95 (ms) | Min (ms) | Max (ms) | Device Used |
 |---|---|---|---:|---:|---:|---:|---|
-| **ASR (Whisper)** | Whisper-Small | `cpu` | 21.61 | 22.71 | 16.66 | 22.71 | Darwin arm64 (dev machine) |
-| **Vision (Disease Classifier)** | MobileNet-v3 | `cpu` | 1.22 | 2.16 | 1.15 | 2.16 | Darwin arm64 (dev machine) |
-| **Retrieval (KB + Embeddings)** | SQLite + Vector | `cpu` | 0.17 | 0.2 | 0.13 | 0.27 | Darwin arm64 (dev machine) |
-| **LLM Advisory (Llama 3.2 3B)** | Llama 3.2 3B Instruct | `cpu` | 0.03 | 0.05 | 0.03 | 0.07 | Darwin arm64 (dev machine) |
-| **TTS (Hindi Voice)** | Piper Hindi / SAPI | `cpu` | 0.0 | 0.0 | 0.0 | 0.01 | Darwin arm64 (dev machine) |
-| **Full Pipeline (End-to-End)** | ASR + Vision + Ret + LLM + TTS | `cpu` | 24.2 | 24.47 | 17.04 | 24.65 | Darwin arm64 (dev machine) |
+| **ASR (Whisper)** | Whisper-Small | `cpu` | 18.87 | 18.93 | 15.9 | 18.97 | Darwin arm64 (dev machine) |
+| **Vision (Disease Classifier)** | MobileNet-v3 | `cpu` | 1.5 | 2.04 | 1.39 | 2.11 | Darwin arm64 (dev machine) |
+| **Retrieval (KB + Embeddings)** | SQLite + Vector | `cpu` | 0.13 | 0.18 | 0.13 | 0.23 | Darwin arm64 (dev machine) |
+| **LLM Advisory (Llama 3.2 3B)** | Llama 3.2 3B Instruct | `cpu` | 0.03 | 0.03 | 0.03 | 0.03 | Darwin arm64 (dev machine) |
+| **TTS (Hindi Voice)** | Piper Hindi / SAPI | `cpu` | 0.0 | 0.0 | 0.0 | 0.02 | Darwin arm64 (dev machine) |
+| **Full Pipeline (End-to-End)** | ASR + Vision + Ret + LLM + TTS | `cpu` | 20.79 | 20.82 | 20.59 | 20.87 | Darwin arm64 (dev machine) |
 
 ---
 

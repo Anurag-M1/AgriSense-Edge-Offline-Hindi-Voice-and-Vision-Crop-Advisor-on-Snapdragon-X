@@ -2,18 +2,17 @@
 conftest.py — Shared test fixtures for AgriSense Edge.
 """
 
-import pytest
-import numpy as np
-from pathlib import Path
 
-from app.backend.config import Settings
+import numpy as np
+import pytest
+
 from app.backend.db import Database
 from app.backend.engines.asr import ASREngine
-from app.backend.engines.vision import VisionEngine
 from app.backend.engines.llm import LLMEngine
 from app.backend.engines.tts import TTSEngine
-from app.backend.retrieval import RetrievalEngine
+from app.backend.engines.vision import VisionEngine
 from app.backend.pipeline import Pipeline
+from app.backend.retrieval import RetrievalEngine
 
 
 @pytest.fixture

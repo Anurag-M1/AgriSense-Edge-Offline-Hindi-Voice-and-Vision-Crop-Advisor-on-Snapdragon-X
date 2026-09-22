@@ -72,7 +72,7 @@ class VisionEngine(EngineBase):
             self._labels = labels
         elif labels_file.exists():
             try:
-                with open(labels_file, "r", encoding="utf-8") as f:
+                with open(labels_file, encoding="utf-8") as f:
                     self._labels = json.load(f)
             except Exception:
                 self._labels = DEFAULT_LABELS

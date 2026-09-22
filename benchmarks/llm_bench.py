@@ -12,14 +12,11 @@ Logs to benchmarks/results/llm_benchmark.csv.
 
 from __future__ import annotations
 
-import argparse
 import csv
-import time
 from pathlib import Path
 
 from app.backend.engines.llm import LLMEngine
-from app.backend.safety import DISCLAIMER_HI, validate_response_safety
-
+from app.backend.safety import DISCLAIMER_HI
 
 TEST_PROMPTS = [
     {

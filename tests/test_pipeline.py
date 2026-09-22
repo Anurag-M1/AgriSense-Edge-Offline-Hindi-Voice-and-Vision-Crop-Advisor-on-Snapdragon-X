@@ -2,10 +2,8 @@
 test_pipeline.py — Pipeline integration tests for AgriSense Edge.
 """
 
-import numpy as np
-import pytest
 
-from app.backend.pipeline import Pipeline, PipelineStage
+from app.backend.pipeline import PipelineStage
 
 
 class TestPipeline:

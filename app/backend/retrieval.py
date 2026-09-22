@@ -10,7 +10,6 @@ Includes full source provenance from kb/sources.csv.
 from __future__ import annotations
 
 import csv
-import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -55,7 +54,7 @@ class RetrievalEngine:
             return
 
         try:
-            with open(sources_path, mode="r", encoding="utf-8") as f:
+            with open(sources_path, encoding="utf-8") as f:
                 reader = csv.DictReader(f)
                 for row in reader:
                     self._sources[row["source_file"].strip()] = {

@@ -12,13 +12,11 @@ from __future__ import annotations
 
 import argparse
 import csv
-import time
 from pathlib import Path
 
 import numpy as np
 
 from app.backend.engines.asr import ASREngine
-
 
 # 35 farmer-style Hindi phrases covering Indian crop pathology queries
 FARMER_HINDI_DATASET = [
@@ -106,7 +104,7 @@ def run_asr_benchmark(backend: str = "cpu", output_dir: Path = Path("benchmarks/
     csv_file = output_dir / "asr_benchmark.csv"
 
     print("=" * 65)
-    print(f"  AgriSense Edge — Hindi Speech Recognition (ASR) Benchmark")
+    print("  AgriSense Edge — Hindi Speech Recognition (ASR) Benchmark")
     print(f"  Backend: {backend} | Dataset: 35 Farmer Hindi queries")
     print("=" * 65)
 

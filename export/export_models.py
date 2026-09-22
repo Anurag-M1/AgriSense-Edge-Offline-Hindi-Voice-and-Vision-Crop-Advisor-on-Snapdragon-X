@@ -15,7 +15,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import time
 from pathlib import Path
 
@@ -32,11 +31,9 @@ def export_vision_model(output_dir: Path, device: str = "Snapdragon X Elite CRD"
     print(f"Target Device: {device}")
 
     # Check if qai_hub SDK is available
-    has_qai = False
-    try:
-        import qai_hub as hub
-        has_qai = True
-    except ImportError:
+    import importlib.util
+
+    if importlib.util.find_spec("qai_hub") is None:
         print("Note: qai_hub SDK not installed in current environment. Using AI Hub workbench manifest.")
 
     compile_job_id = "j-compile-mobilenetv3-int8-qnn-01"

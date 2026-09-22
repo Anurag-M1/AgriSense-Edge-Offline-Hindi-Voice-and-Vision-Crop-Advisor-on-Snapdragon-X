@@ -8,12 +8,12 @@ Verifies:
 4. Status is explicitly tagged 'needs agronomist review'.
 """
 
-import pytest
 from pathlib import Path
+
+import pytest
 
 from app.backend.db import Database
 from app.backend.retrieval import RetrievalEngine
-
 
 SUPPORTED_TEST_CASES = [
     ("Tomato___Early_blight", "tomato_early_blight.md", "ICAR-IIHR"),

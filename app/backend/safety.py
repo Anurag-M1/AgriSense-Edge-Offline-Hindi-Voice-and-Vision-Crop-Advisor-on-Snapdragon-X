@@ -13,7 +13,6 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-
 # Hindi disclaimer that must appear in every response
 DISCLAIMER_HI = "कृपया अपने स्थानीय कृषि विज्ञान केंद्र / कृषि अधिकारी से पुष्टि करें।"
 DISCLAIMER_EN = "Please confirm with your local Krishi Vigyan Kendra / agriculture officer."

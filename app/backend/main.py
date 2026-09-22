@@ -6,17 +6,13 @@ Provides the local HTTP API for the frontend. Binds to localhost only.
 
 from __future__ import annotations
 
-import io
-import json
 import base64
-from contextlib import asynccontextmanager
-from pathlib import Path
+import io
+from contextlib import asynccontextmanager, suppress
 
 import numpy as np
-from fastapi import FastAPI, File, Form, UploadFile, HTTPException
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
-from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from app.backend.config import settings
@@ -25,7 +21,7 @@ from app.backend.engines.asr import ASREngine
 from app.backend.engines.llm import LLMEngine
 from app.backend.engines.tts import TTSEngine
 from app.backend.engines.vision import VisionEngine
-from app.backend.pipeline import Pipeline, PipelineStage
+from app.backend.pipeline import Pipeline
 from app.backend.retrieval import RetrievalEngine
 
 # Global instances
@@ -178,7 +174,7 @@ async def diagnose(
                 audio_array = audio_array.mean(axis=1)  # Convert to mono
             audio_array = audio_array.astype(np.float32)
         except Exception as e:
-            raise HTTPException(status_code=400, detail=f"Invalid audio file: {e}")
+            raise HTTPException(status_code=400, detail=f"Invalid audio file: {e}") from e
 
     if image_array is None and audio_array is None and text_input is None:
         raise HTTPException(
@@ -200,7 +196,7 @@ async def diagnose(
 
     # Save case to DB
     case_id = None
-    try:
+    with suppress(Exception):
         case_id = db.save_case(
             disease_label=result.disease_label,
             confidence=result.confidence,
@@ -219,8 +215,6 @@ async def diagnose(
                 ]
             },
         )
-    except Exception:
-        pass  # Don't fail the response if DB write fails
 
     return DiagnoseResponse(
         disease_label=result.disease_label,
@@ -250,7 +244,7 @@ async def submit_feedback(req: FeedbackRequest):
         db.save_feedback(req.case_id, req.helpful, req.comment)
         return {"status": "ok"}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e
 
 
 @app.get("/api/settings")

@@ -2,11 +2,9 @@
 test_engines.py — Unit tests for AgriSense Edge inference engines.
 """
 
-import numpy as np
 import pytest
 
 from app.backend.engines.asr import ASREngine
-from app.backend.engines.base import EngineBase
 from app.backend.engines.llm import LLMEngine
 from app.backend.engines.tts import TTSEngine
 from app.backend.engines.vision import VisionEngine

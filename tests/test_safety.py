@@ -11,7 +11,6 @@ Verifies that the safety module:
 import pytest
 
 from app.backend.safety import (
-    DISCLAIMER_EN,
     DISCLAIMER_HI,
     LOW_CONFIDENCE_HI,
     check_and_fix_response,
